@@ -1,0 +1,11 @@
+.Startpage {
+    height: 100vh;
+    display: flex;
+    background-color: #012b58;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center;
+}
+.link-text {
+    color: #012b58;
+}

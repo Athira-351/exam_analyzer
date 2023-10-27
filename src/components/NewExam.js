@@ -1,4 +1,5 @@
 import './NewExam.css';
+import {Link} from "react-router-dom"
 import React, { useState } from 'react';
 import { Collapse,
     Navbar,
@@ -24,20 +25,26 @@ function NewExam() {
 
     return (
         <div className='App'>
-        <Navbar color="faded" light>
+        <Navbar color="dark" light>
             <NavbarBrand href="/" className="me-auto">
-                <h3>BERT</h3>
+                <h3>Exam Analyzer</h3>
             </NavbarBrand>
             <NavbarToggler onClick={toggleNavbar} className="me-2" />
             <Collapse isOpen={!collapsed} navbar>
-                <Nav navbar>
-                    <NavItem>
-                        <NavLink href="Profile.js">Profile</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="Login.js">Logout</NavLink>
-                    </NavItem>
-                </Nav>
+                    <Nav navbar>
+                        <NavItem>
+                            <NavLink href="/Profile/">Profile</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/ /">My Exams</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/ /">Settings</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/Login/">Logout</NavLink>
+                        </NavItem>
+                    </Nav>
             </Collapse>
         </Navbar>
         <br /><br />
@@ -69,13 +76,15 @@ function NewExam() {
                 </tbody>
             </Table>
 
-        <Button>
-            <a href="NewExam.js">Create Exam</a>           
+        <Button color='success'>
+            <Link to ="/MyExamPage" className='link-texts'>Create Exam</Link>
         </Button>
+ 
         <Button>
-            <a href="NewExam.js">Cancel</a>   
+            <Link to ="/MyExamPage" className='link-texts'>Cancel</Link>
         </Button>
         </div>
+
       );
 }
 

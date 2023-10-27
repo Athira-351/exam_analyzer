@@ -1,0 +1,28 @@
+.link-texts {
+    text-decoration: none;
+    color: #fff;
+  }
+
+.newexam-button {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px; /* Adjust as needed */
+    
+}
+
+.right-button {
+  margin-right: 20px;
+}
+
+.result-button {
+  text-decoration: none;
+    color: #fff;
+}
+.me-auto {
+  color: rgb(243, 243, 243);
+}
+.nav {
+  background-color: rgb(5, 102, 76);
+}
+
+
