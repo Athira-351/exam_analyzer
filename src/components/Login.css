@@ -1,4 +1,42 @@
-.loginbutton {
+
+
+.loginpage {
+    height: 100vh;
+    display: flex;
+    background-color: #012b58;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center;
+}
+
+.link-texts {
     text-decoration: none;
-    color: white;
+    color: #f0f3f5;
   }
+.link {
+  text-decoration: none;
+    color: #012b58;
+}
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */    
+    border: 2px solid #270f58;
+    border-radius: 1px;
+    margin-bottom: 1em;
+    padding: 1em; 
+    width: 400px; 
+    text-decoration-color: #270f58;
+    background-color: #ebe9f0;
+    
+}
+
+.login-header {
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #012b58; /* Set the desired text color */
+  /* Add more styles as needed */
+}

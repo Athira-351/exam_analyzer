@@ -1,23 +1,15 @@
 import './Signup.css';
+import { Link } from 'react-router-dom'
 import { Form, Input, Button, FormGroup, Label } from 'reactstrap';
-
-function Signup() {
+const Signup = () => {
   return (
     <div className="App">
       <header className="App-header">
         <h1><b>Sign Up</b></h1>
         <Form>
             <FormGroup>
-              <Label for="firstName">First Name</Label>
-              <Input type="text" id="firstName" placeholder="First Name" />
-            </FormGroup>
-            <FormGroup>
-              <Label for="middleName">Middle Name</Label>
-              <Input type="text" id="middleName" placeholder="Middle Name" />
-            </FormGroup>
-            <FormGroup>
-              <Label for="lastName">Last Name</Label>
-              <Input type="text" id="lastName" placeholder="Last Name" />
+              <Label for="firstName">Full Name</Label>
+              <Input type="text" id="fullName" placeholder="Full Name" />
             </FormGroup>
             <FormGroup>
               <Label for="email">Email</Label>
@@ -33,11 +25,11 @@ function Signup() {
                 Remember me
               </Label>
             </FormGroup>
-            <Button>
-              Sign Up
+            <Button color='success'>
+              <Link to="/Login" className='link-text'>Submit</Link>
             </Button>
           </Form>
-        <a href="Login.js">Log In</a>
+        
       </header>
     </div>
   );

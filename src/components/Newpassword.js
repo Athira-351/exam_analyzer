@@ -1,4 +1,5 @@
 import './Newpassword.css';
+import { Link } from 'react-router-dom';
 import { Form, Input, Button, FormGroup, Label } from 'reactstrap';
 
 function Newpassword() {
@@ -18,8 +19,8 @@ function Newpassword() {
                   <Label for="password">Conform Password</Label>
                   <Input type="password" id="password" placeholder="Confirm New Password" />
                 </FormGroup>
-                <Button>
-                    <a href="Login.js">Reset Password</a>
+                <Button color='success'>
+                    <Link to="/Login" className='link-text'>Reset Password</Link>
                 </Button>
               </Form>
           </header>

@@ -1,65 +1,56 @@
 import './Login.css';
 import React from 'react';
-import {link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Form, Input, Button, FormGroup, Label } from 'reactstrap';
 
-function Login() {
+const Login = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1><b>Login</b></h1>
-        <Form>
-          <FormGroup>
-            <Label
-              for="exampleEmail"
-              hidden
-            >
-              Email
-            </Label>
-            <Input
-              id="exampleEmail"
-              name="email"
-              placeholder="Email"
-              type="email"
-            />
-          </FormGroup>
-          {' '}
-          <FormGroup>
-            <Label
-              for="examplePassword"
-              hidden
-            >
-              Password
-            </Label>
-            <Input
-              id="examplePassword"
-              name="password"
-              placeholder="Password"
-              type="password"
-            />
+      <div className='loginpage'>
+        <div className="page-container">
+          <header className="App-header">
+            <h1 className='login-header'>Log In</h1>
             <br />
-            <Input
-              id="exampleCheckbox"
-              name="checkbox"
-              type="checkbox"
-            />
-            <Label
-              check
-              for="exampleCheckbox"
-            >
-              Remember Me
-            </Label>
-          </FormGroup>
-          {' '}
-          <Button>
-          <a href="myExamPage.js" className="loginbutton">Log In</a>
-          </Button>
-        </Form>
-        <a href="Forgot_password.js">Forgot Password?</a>
-        <a href="Signup.js"><b>Sign Up</b></a>
-      </header>
+              <Form>
+                <FormGroup>
+                  <Label for="exampleEmail" hidden>Email</Label>
+                  <Input
+                    id="exampleEmail"
+                    name="email"
+                    placeholder="Email"
+                    type="email"
+                  />
+                </FormGroup>
+                {' '}
+                <FormGroup>
+                  <Label for="examplePassword" hidden>Password</Label>
+                  <Input
+                    id="examplePassword"
+                    name="password"
+                    placeholder="Password"
+                    type="password"
+                  />
+                  <br />
+                  <Input
+                    id="exampleCheckbox"
+                    name="checkbox"
+                    type="checkbox"
+                  />
+                  <Label check for="exampleCheckbox">Remember Me</Label>
+                </FormGroup>
+                {' '}
+                <Button color='success'>
+                  <Link to="/myExamPage" className="link-texts">Log In</Link>
+                </Button>
+              </Form>
+              
+              <Link to="/ForgotPassword" className='link'>Forgot Password?</Link>
+              <p>Don't have an account?<Link to="/Signup" className='link'><b>Sign Up</b></Link></p>
+          </header>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Login;
