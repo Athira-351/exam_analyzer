@@ -1,4 +1,4 @@
-import './Result.css';
+import './result.css';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { Collapse,
@@ -9,7 +9,8 @@ import { Collapse,
     NavItem,
     NavLink, 
     Table,
-    Button } from 'reactstrap';
+    Button,
+    Container } from 'reactstrap';
 
 function Result(props) {
     const [collapsed, setCollapsed] = useState(true);
@@ -17,16 +18,13 @@ function Result(props) {
 
     return (
         <div className="App">
-        <Navbar color="dark" light>
-            <NavbarBrand href="/" className="me-auto">
-                <h3>Exam Analyzer</h3>
-            </NavbarBrand>
-            <NavbarToggler onClick={toggleNavbar} className="me-2" />
-            <Collapse isOpen={!collapsed} navbar>
-                <Nav navbar>
-                        <NavItem>
-                            <NavLink href="/Profile/">Profile</NavLink>
-                        </NavItem>
+            <Navbar className='nav' light expand="md">
+                <NavbarBrand href="/" className="me-auto">
+                    <h3>Exam Analyzer</h3>
+                </NavbarBrand>
+                <NavbarToggler onClick={toggleNavbar} className="me-2" />
+                <Collapse isOpen={!collapsed} navbar>
+                    <Nav className="ml-auto" navbar>
                         <NavItem>
                             <NavLink href="/ /">My Exams</NavLink>
                         </NavItem>
@@ -34,14 +32,17 @@ function Result(props) {
                             <NavLink href="/ /">Settings</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/Login/">Logout</NavLink>
+                            <NavLink href="/login/">Logout</NavLink>
                         </NavItem>
                     </Nav>
-            </Collapse>
-        </Navbar>
-        <br /><br />
-        <h3>Result</h3>
+                </Collapse>
+            </Navbar>
+            <br />
+        <Container className='result-container'>   
+        <h2 className='heading'>Result>></h2>
         <br />
+
+        <Container className='container'>
         <Table bordered>
             <thead>
                 <tr className="table-dark">
@@ -62,7 +63,9 @@ function Result(props) {
                 </tr>
             </tbody>
         </Table>
-        <Table>
+
+        <div className='result-table'>
+        <Table bordered>
             <thead>
                 <tr>
                     <th>S.no</th>
@@ -122,10 +125,13 @@ function Result(props) {
                 </tr>
             </tbody>
         </Table>
+        </div>
+        </Container>
         <br />
-        <Button color='dark'>
-            <Link to ="/MyExamPage" className='link-text'>Back</Link>
+        <Button color='warning'>
+            <Link to ="/my-exam-page" className='link-text'>Back</Link>
         </Button>
+        </Container>
         </div>
     );
 }

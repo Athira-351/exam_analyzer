@@ -1,4 +1,4 @@
-import './Login.css';
+import './login.css';
 import React from 'react';
 import { Link } from "react-router-dom";
 import { Form, Input, Button, FormGroup, Label } from 'reactstrap';
@@ -40,12 +40,12 @@ const Login = () => {
                 </FormGroup>
                 {' '}
                 <Button color='success'>
-                  <Link to="/myExamPage" className="link-texts">Log In</Link>
+                  <Link to="/my-exam-page" className="link-texts">Log In</Link>
                 </Button>
               </Form>
               
-              <Link to="/ForgotPassword" className='link'>Forgot Password?</Link>
-              <p>Don't have an account?<Link to="/Signup" className='link'><b>Sign Up</b></Link></p>
+              <Link to="/forgot-password" className='link'>Forgot Password?</Link>
+              <p>Don't have an account?<Link to="/signup" className='link'><b>Sign Up</b></Link></p>
           </header>
         </div>
       </div>

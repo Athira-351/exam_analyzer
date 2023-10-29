@@ -6,6 +6,15 @@
     align-items: center; /* Center horizontally */
     justify-content: center;
 }
+.start-button {
+    background-color: transparent;
+    border-radius: 2em;
+    border-color: white;
+    border-width: 3px;
+    
+}
 .link-text {
     color: #012b58;
 }
+
+

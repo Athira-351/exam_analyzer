@@ -2,3 +2,34 @@
     text-decoration: none;
     color: #fff;
   }
+.signuppage {
+    height: 100vh;
+    display: flex;
+    background-color: #012b58;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center;
+  }
+
+  .container-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */    
+    border: 2px solid #270f58;
+    border-radius: 1px;
+    margin-bottom: 1em;
+    padding: 2em; 
+    width: 300px; 
+    text-decoration-color: #270f58;
+    background-color: #ebe9f0;
+    
+  }
+.signup-header {
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #012b58; /* Set the desired text color */
+  /* Add more styles as needed */
+  }

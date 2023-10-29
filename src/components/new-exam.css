@@ -1,0 +1,39 @@
+.link-texts {
+    text-decoration: none;
+    color: #fff;
+  }
+
+.cancel-button {
+  text-decoration: none;
+  color: #fff;
+}
+
+.create {
+  color:#012b58;
+}
+
+.step{
+  color: rgb(143, 12, 12);
+  text-decoration: underline;
+}
+.create-table {
+  display: flex;
+  justify-content: center;
+}
+.table {
+  border: rgb(0, 0, 0);
+  border-width: 10px;
+}
+.nav {
+  color: #ffffff;
+  background-color: #270f58;
+}
+.me-auto {
+  color: #ffffff;
+}
+.me-2 {
+  background-color: #fff;
+}
+.container {
+  width: 80%;
+}

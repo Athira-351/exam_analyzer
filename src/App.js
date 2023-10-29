@@ -1,32 +1,37 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route,Routes} from 'react-router-dom'
-import Start from './components/Start';
-import Login from './components/Login'
-import Signup from './components/Signup'
-import MyExamPage from './components/MyExamPage'
-import ForgotPassword from './components/ForgotPassword'
-import Newpassword from './components/Newpassword'
-import NewExam from './components/NewExam';
-import Result from './components/Result';
-import OTP from './components/OTP';
+import { BrowserRouter as Router, Route,Routes} from 'react-router-dom';
+import Start from './components/start';
+import Login from './components/login';
+import Signup from './components/signup';
+import MyExamPage from './components/my-exam-page';
+import ForgotPassword from './components/forgot-password';
+import Newpassword from './components/new-password';
+import NewExam from './components/new-exam';
+import Result from './components/result';
+import OTP from './components/otp';
+import Next from './components/next';
+
 
 function App() {
     return (
+
         <Router>
             <Routes>
-                <Route path="/Start" element = {<Start />} />  
-                <Route path="/Login" element = {<Login />} />
-                <Route path="/Signup" element = {<Signup />} />
-                <Route path="/MyExamPage" element = {<MyExamPage />} />
-                <Route path="/ForgotPassword" element = {<ForgotPassword />} />
-                <Route path ="/Newpassword" element = {<Newpassword />} />
-                <Route path ="/NewExam" element = {<NewExam />} />
-                <Route path = "/Result" element = {<Result />} />
-                <Route path = "/OTP" element = {<OTP />} />
-                <Route index element={<Start />} />
+                <Route path="/start" element = {<Start />} />  
+                <Route path="/login" element = {<Login />} />
+                <Route path="/signup" element = {<Signup />} />
+                <Route path="/my-exam-page" element = {<MyExamPage />} />
+                <Route path="/forgot-password" element = {<ForgotPassword />} />
+                <Route path ="/new-password" element = {<Newpassword />} />
+                <Route path ="/new-exam" element = {<NewExam />} />
+                <Route path = "/result" element = {<Result />} />
+                <Route path = "/otp" element = {<OTP />} />
+                <Route path = "/next" element = {<Next />} />
+                <Route index element={<Start />} />                
             </Routes>
         </Router>
+
     );
 }
 

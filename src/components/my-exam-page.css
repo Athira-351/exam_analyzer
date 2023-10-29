@@ -1,0 +1,39 @@
+
+.link-texts {
+    text-decoration: none;
+    color: #fff;
+  }
+
+.newexam-button {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px; /* Adjust as needed */    
+}
+
+.right-button {
+  margin-right: 20px;
+}
+
+.result-button {
+  text-decoration: none;
+    color: #fff;
+}
+.centered-table {
+  display: flex;
+  justify-content: center;
+  
+}
+.ml-auto {
+  padding-left: 70%;
+
+}
+.nav {
+  color: #ffffff;
+  background-color: #270f58;
+}
+.me-auto {
+  color: #ffffff;
+}
+.me-2 {
+  background-color: #fff;
+}

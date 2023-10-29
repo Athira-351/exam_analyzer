@@ -5,3 +5,30 @@
 .nav-link {
     color: white;
 }
+
+.heading {
+    color: #270f58;
+    align-content: center;
+}
+
+.ml-auto {
+    padding-left: 70%;
+
+}
+.nav {
+    color: #ffffff;
+    background-color: #270f58;
+}
+.me-auto {
+    color: #ffffff;
+}
+.me-2 {
+    background-color: #fff;
+}
+.container {
+    width: 70%;
+    padding: 0%;
+}
+.result-container {
+    width: 100%;
+}
