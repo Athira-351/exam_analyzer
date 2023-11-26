@@ -89,7 +89,7 @@ function Next(props) {
                     />
                     </FormGroup>
                     <Button color='success'>
-                        <Link to="/my-exam-page" className= 'submit-button'>Submit</Link>
+                        <Link to="/end" className= 'submit-button'>Submit</Link>
                     </Button>
                 </div>
             </Form>

@@ -11,7 +11,8 @@ import NewExam from './components/new-exam';
 import Result from './components/result';
 import OTP from './components/otp';
 import Next from './components/next';
-
+import MyExams from './components/my-exams';
+import End from './components/end';
 
 function App() {
     return (
@@ -28,6 +29,8 @@ function App() {
                 <Route path = "/result" element = {<Result />} />
                 <Route path = "/otp" element = {<OTP />} />
                 <Route path = "/next" element = {<Next />} />
+                <Route path = "/my-exams" element = {<MyExams />} />
+                <Route path = "/end" element = {<End />} />
                 <Route index element={<Start />} />                
             </Routes>
         </Router>

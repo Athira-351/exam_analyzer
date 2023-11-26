@@ -11,10 +11,21 @@ import { Collapse,
     Table,
     Button,
     Container } from 'reactstrap';
+
     
 function MyExamPage(props) {
     const [collapsed, setCollapsed] = useState(true);
+    const [linkCopied, setLinkCopied] = useState(false);
+
     const toggleNavbar = () => setCollapsed(!collapsed);
+
+    const handleCopyLink = () => {
+        // Logic to copy the link
+        // For simplicity, we'll just set linkCopied to true after a short delay
+        setTimeout(() => {
+            setLinkCopied(true);
+        }, 1000);
+    };
 
     return (
         <div className="App">
@@ -26,7 +37,7 @@ function MyExamPage(props) {
                 <Collapse isOpen={!collapsed} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink href="/ /">My Exams</NavLink>
+                            <NavLink href="/my-exams">My Exams</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/ /">Settings</NavLink>
@@ -67,8 +78,10 @@ function MyExamPage(props) {
                         <td>2 hours</td>
                         <td>100</td>
                         <td>
-                            <a href="/">copy link</a>
-                            <Button color='primary'>
+                        <a href="/my-exam-page" onClick={handleCopyLink} className="btn btn-outline-secondary copy-link">
+                                {linkCopied ? 'Link Copied!' : 'Copy Link'}
+                            </a>
+                            <Button color='primary' className="result-btn">
                                 <Link to="/result" className= 'result-button'>View Result</Link>
                             </Button>
                         </td>                   
@@ -80,12 +93,13 @@ function MyExamPage(props) {
                         <td>12.30 PM - 3.30 PM</td>
                         <td>3 hours</td>
                         <td>100</td>
-                        <
-                            td>
-                            <a href="/">copy link</a>
-                            <Button color='primary'>
+                        <td>
+                            <a href="/my-exam-page" onClick={handleCopyLink} className="btn btn-outline-secondary copy-link">
+                                {linkCopied ? 'Link Copied!' : 'Copy Link'}
+                            </a>
+                            <Button color='primary' className="result-btn">
                                 <Link to="/result" className= 'result-button'>View Result</Link>
-                            </Button> 
+                            </Button>
                         </td>
                     </tr>
                     <tr>
@@ -95,9 +109,11 @@ function MyExamPage(props) {
                         <td>4 PM - 7 PM</td>
                         <td>2 hours</td>
                         <td>100</td>
-                        <td>    
-                            <a href="/">copy link</a>
-                            <Button color='primary'>
+                        <td>          
+                        <a href="/my-exam-page" onClick={handleCopyLink} className="btn btn-outline-secondary copy-link">
+                                {linkCopied ? 'Link Copied!' : 'Copy Link'}
+                            </a>
+                            <Button color='primary' className="result-btn">
                                 <Link to="/result" className= 'result-button'>View Result</Link>
                             </Button> 
                         </td>

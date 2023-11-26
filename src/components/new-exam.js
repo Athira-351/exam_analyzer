@@ -34,7 +34,7 @@ function NewExam() {
                 <Collapse isOpen={!collapsed} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink href="/ /">My Exams</NavLink>
+                            <NavLink href="/my-exams">My Exams</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/ /">Settings</NavLink>
@@ -47,59 +47,59 @@ function NewExam() {
             </Navbar>
             <br />
             <Container className='container'>
-        <h4 className='step'>Step 1:</h4>
-        <h3 className='create'>Create Exam</h3>
-        <br />
-        <div className='create-table'>
-            <div className='table'>
-        <Table bordered>
-            <thead></thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <b>Exam Name : </b>
-                    </td>
-                    <td>
-                        <input type="text" name="examName" placeholder='Exam Name' value={inputdata.examName} id="examNameInput" onChange = { handleChange } />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Exam Date : </b>
-                    </td>
-                    <td>
-                        <input type="text" name="examStartDate" placeholder='dd/mm/yyyy' value={inputdata.examStartDate} id="name" onChange = { handleChange } />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Exam Starting Time : </b>
-                    </td>
-                    <td>
-                        <input type="text" name="examStartTime" placeholder='00:00 AM' value={inputdata.examStartTime} id="name" onChange = { handleChange } />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    <b>Exam Duration(in minutes):</b>
-                    </td>
-                    <td>
-                        <input type="text" name="examDuration" placeholder='in minutes' value={inputdata.examDuration} id="name" onChange = { handleChange } />
-                    </td>
-                </tr>
-            </tbody>
-        </Table>
+                <h4 className='step'>Step 1:</h4>
+                <h3 className='create'>Create Exam</h3>
+                <br />
+                <div className='create-table'>
+                    <div className='table'>
+                        <Table bordered>
+                            <thead></thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>Exam Name : </b>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="examName" placeholder='Exam Name' value={inputdata.examName} id="examNameInput" onChange = { handleChange } />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Exam Date : </b>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="examStartDate" placeholder='dd/mm/yyyy' value={inputdata.examStartDate} id="name" onChange = { handleChange } />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Exam Starting Time : </b>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="examStartTime" placeholder='00:00 AM' value={inputdata.examStartTime} id="name" onChange = { handleChange } />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Exam Duration(in minutes):</b>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="examDuration" placeholder='in minutes' value={inputdata.examDuration} id="name" onChange = { handleChange } />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </div>
+                    </div>
+                <Link to ="/next" className='link-texts'>
+                    <Button color='success'>Next</Button>
+                </Link>        
+                {' '}        
+                <Link to ="/my-exam-page" className='link-texts'>
+                    <Button color='warning' className='cancel-button'>Cancel</Button>
+                </Link>
+            </Container>
         </div>
-        </div>
-        <Button color='success'>
-            <Link to ="/next" className='link-texts'>Next</Link>
-        </Button>
-        {' '}
-        <Button color='warning' className='cancel-button'>
-            <Link to ="/my-exam-page" className='link-texts'>Cancel</Link>
-        </Button>
-        </Container>
-    </div>
 
     );
 }

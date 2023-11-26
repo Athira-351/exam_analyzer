@@ -26,7 +26,7 @@ function Result(props) {
                 <Collapse isOpen={!collapsed} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink href="/ /">My Exams</NavLink>
+                            <NavLink href="/my-exams">My Exams</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/ /">Settings</NavLink>
@@ -37,10 +37,12 @@ function Result(props) {
                     </Nav>
                 </Collapse>
             </Navbar>
-            <br />
-        <Container className='result-container'>   
-        <h2 className='heading'>Result>></h2>
-        <br />
+            <br /><br /><br />
+            <Container className='result-container'>
+               <h2 className='result-heading'><b>RESULT</b></h2>
+            </Container>
+            <br /><br /><br />
+       
 
         <Container className='container'>
         <Table bordered>
@@ -57,9 +59,9 @@ function Result(props) {
                 <tr>
                     <td>Computer Vision</td>
                     <td>23/10/2023</td>
-                    <td>7 PM - 9 PM</td>
+                    <td>7 PM</td>
                     <td>2 hours</td>
-                    <td>100</td>                                     
+                    <td>10</td>                                     
                 </tr>
             </tbody>
         </Table>
@@ -123,6 +125,18 @@ function Result(props) {
                     <td>156</td>
                     <td>200</td>
                 </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Shivani S</td>
+                    <td>144</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Aiswarya Mital</td>
+                    <td>156</td>
+                    <td>200</td>
+                </tr>
             </tbody>
         </Table>
         </div>
@@ -131,7 +145,7 @@ function Result(props) {
         <Button color='warning'>
             <Link to ="/my-exam-page" className='link-text'>Back</Link>
         </Button>
-        </Container>
+       
         </div>
     );
 }

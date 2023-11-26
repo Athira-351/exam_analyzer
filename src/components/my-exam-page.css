@@ -29,11 +29,18 @@
 }
 .nav {
   color: #ffffff;
-  background-color: #270f58;
+  background-color: #012b58;
 }
 .me-auto {
   color: #ffffff;
 }
 .me-2 {
   background-color: #fff;
+}
+.copy-link {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.result-btn {
+  margin-left: 10px; /* Adjust the margin as needed */
 }

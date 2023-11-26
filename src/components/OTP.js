@@ -19,16 +19,17 @@ function OTP() {
 
   return (
     <div className="App">
+      <div className='heading'>
       <Container className='container'>
         <header className="App-header">
-            <h1 className='text'><b>Verify Details</b></h1>
+            <h1 className='texts'><b>Verify Details</b></h1>
             <br /><br />
-            <p>We've sent a verification code to your email.</p>
-            <p>Please verify it to reset your password</p>
+            <p className='texts'>We've sent a verification code to your email.</p>
+            <p className='texts'>Please verify it to reset your password</p>
             <br />
             <form onSubmit={handleSubmit}>
               <FormGroup>
-                <label>Enter Verification Code</label>
+                <label className='texts'>Enter Verification Code</label>
                   <Input
                     type="text"
                     value={verificationCode}
@@ -42,6 +43,7 @@ function OTP() {
             </form>
         </header>
         </Container>
+        </div>
     </div>
   );
 }

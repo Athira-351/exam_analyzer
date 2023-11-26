@@ -5,10 +5,10 @@ const Signup = () => {
   return (
     <div className="App">
       <div className='signuppage'>
-        <div className='container-page'>
+        <div className='container-page col-md-6 col-sm-12'>
           <header className="App-header">
             <h1 className='signup-header'>Sign Up</h1>
-              <Form>
+              <Form className='form'>
                 <FormGroup>
                   <Label for="firstName">Full Name</Label>
                     <Input type="text" id="fullName" placeholder="Full Name" />
@@ -27,9 +27,11 @@ const Signup = () => {
                       Remember me
                   </Label>
                 </FormGroup>
-                <Button color='success'>
-                  <Link to="/login" className='link-text'>Submit</Link>
-                </Button>
+                
+                  <Link to="/my-exam-page" className='link-text'>
+                    <Button color='success'>Submit</Button>
+                  </Link>
+                
               </Form>
           </header>
         </div>

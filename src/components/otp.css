@@ -2,6 +2,15 @@
     padding: 10%;
   }
   
-  .text {
-    color: #270f58;
+.texts {
+    color: #ffffff;
   }
+.heading {
+  background-color: #012b58;
+  height: 100vh;
+  display: flex;
+  background-color: #012b58;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center;
+}
