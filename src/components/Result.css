@@ -1,6 +1,10 @@
 .link-text {
     text-decoration: none;
-    color: white;
+    color: #ffffff;
+}
+.back-btn {
+    background-color: #728090;
+    margin-left: 85%;
 }
 .nav-link {
     color: white;
@@ -33,5 +37,4 @@
     color: #012b58;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
-
 }

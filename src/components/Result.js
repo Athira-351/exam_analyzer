@@ -142,7 +142,7 @@ function Result(props) {
         </div>
         </Container>
         <br />
-        <Button color='warning'>
+        <Button outline color='secondary' className='back-btn'>
             <Link to ="/my-exam-page" className='link-text'>Back</Link>
         </Button>
        
