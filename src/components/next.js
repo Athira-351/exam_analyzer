@@ -30,6 +30,12 @@ function Next(props) {
     const newId = Math.max(...questions.map((q) => q.id), 0) + 1;
     setQuestions([...questions, { id: newId, placeholder: `Question ${newId}` }]);
   };
+  const handleAnswerChange = (id, value) => {
+    const updatedQuestions = questions.map((q) =>
+      q.id === id ? { ...q, answer: value } : q
+    );
+    setQuestions(updatedQuestions);
+  };
 
   return (
     <div className="App">
@@ -69,11 +75,32 @@ function Next(props) {
                   name={`text${question.id}`}
                   type="textarea"
                 />
-                
+                <br />
+                <p>You can answer the question by typing or uploading a single PDF file.</p>
+                <div className='answer'>
+                <FormGroup>
+                  <Input className='que'
+                    id="exampleFile"
+                    name="file"
+                    type="file"
+                  />
+                  <FormText className='formtext'>
+                    Upload the file here
+                  </FormText>
+                </FormGroup>
+                <div className='or'><h5>OR</h5></div>
+                <FormGroup>
+              <Input className='que'
+                placeholder='Type your answer here...'
+                id="exampleText"
+                name="text"
+                type="textarea"
+              />
+            </FormGroup>
+            </div>
                 <hr className="short-hr" />
               </FormGroup>
               <br />
-                
             </Form>
           </div>
         ))}

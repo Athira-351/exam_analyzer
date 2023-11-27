@@ -1,6 +1,6 @@
 import './answersheet.css';
 import { Link } from 'react-router-dom'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Collapse,
   Navbar,
@@ -17,16 +17,31 @@ import {
   Button,
   Container,
 } from 'reactstrap';
-
 function Ans(props) {
     const [collapsed, setCollapsed] = useState(true);
     const toggleNavbar = () => setCollapsed(!collapsed);
   
     const [currentQuestion, setCurrentQuestion] = useState(1);
-    const totalQuestions = 5; // Set the total number of questions
+    const [questions, setQuestions] = useState([]);
+
+    useEffect(() => {
+      // Use dummy data if no predefined questions are provided
+      const dummyQuestions = [
+        { id: 1, text: 'What is Natural Language Processing?' },
+        { id: 2, text: 'Explain any two real-life applications of Natural Language Processing.' },
+        { id: 3, text: 'What are unigrams, bigrams, trigrams, and n-grams in NLP?' },
+        { id: 4, text: 'What are the steps involved in solving an NLP problem?' },
+        { id: 5, text: 'How to tokenize a sentence using the nltk package?' }
+        
+        // Add more dummy questions as needed
+      ];
   
+      // Use predefined questions if provided, otherwise use dummy questions
+      setQuestions(props.predefinedQuestions || dummyQuestions);
+    }, [props.predefinedQuestions]);
+
     const handleNextQuestion = () => {
-      if (currentQuestion < totalQuestions) {
+      if (currentQuestion < questions.length) {
         setCurrentQuestion(currentQuestion + 1);
       }
     };
@@ -69,16 +84,14 @@ function Ans(props) {
             <Form>
             <FormGroup>
             <Input
-              className='que'
-              placeholder='Type the question here...'
+              className="que"
+              placeholder={questions[currentQuestion - 1]?.text || 'Type the question here...'}
               id="exampleText"
               name="text"
               type="textarea"
               readOnly // Make the input read-only
-
-
             />
-                    <FormText className='formtext'>
+            <FormText className='formtext'>
               Only the owner can edit or change the content.
             </FormText><br />
             
@@ -115,8 +128,8 @@ function Ans(props) {
               )}
               {' '}
               <Button color='success' onClick={handleNextQuestion}>
-              {currentQuestion < totalQuestions ? 'Next Question' : 'Finished'}
-            </Button>
+                {currentQuestion < questions.length ? 'Next Question' : 'Finished'}
+              </Button>
             </div>
           </div>
         </Form>
