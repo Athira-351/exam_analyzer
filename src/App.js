@@ -13,6 +13,7 @@ import OTP from './components/otp';
 import Next from './components/next';
 import MyExams from './components/my-exams';
 import End from './components/end';
+import Ans from './components/answersheet';
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                 <Route path = "/otp" element = {<OTP />} />
                 <Route path = "/next" element = {<Next />} />
                 <Route path = "/my-exams" element = {<MyExams />} />
+                <Route path = "/answersheet" element = {<Ans />} />
                 <Route path = "/end" element = {<End />} />
                 <Route index element={<Start />} />                
             </Routes>

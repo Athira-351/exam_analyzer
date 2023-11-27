@@ -21,6 +21,15 @@ import {
 function Next(props) {
   const [collapsed, setCollapsed] = useState(true);
   const toggleNavbar = () => setCollapsed(!collapsed);
+    
+  const [questions, setQuestions] = useState([
+    { id: 1, placeholder: 'Type the question here...' },
+  ]);
+
+  const addQuestion = () => {
+    const newId = Math.max(...questions.map((q) => q.id), 0) + 1;
+    setQuestions([...questions, { id: newId, placeholder: `Question ${newId}` }]);
+  };
 
   return (
     <div className="App">
@@ -32,7 +41,7 @@ function Next(props) {
                 <Collapse isOpen={!collapsed} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink href="/ /">My Exams</NavLink>
+                            <NavLink href="/my-exam-page">My Exams</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/ /">Settings</NavLink>
@@ -48,53 +57,40 @@ function Next(props) {
             <br />
             <h4 className="step">Step 2:</h4>
             <br />
-            <h5 className="create">Question.1:</h5>
+            {questions.map((question, index) => (
+          <div key={question.id}>
+            <h5 className="create">Question {index + 1}:</h5>
             <Form>
-                <FormGroup>           
-                    <Input  className='que'
-                        placeholder='Type the question here...'
-                        id="exampleText"
-                        name="text"
-                        type="textarea"
-                    />
-                    <FormText className='formtext'>
-                          Only the owner can edit or change the content.
-                    </FormText><br />
-                    <Button color='success'>
-                        <Link to="/my-exam-page" className= 'submit-button'>Submit</Link>
-                    </Button>
-                    <hr className="short-hr"/>
-                </FormGroup>
-                <br />
-                <p>You can answer the question by typing or uploading a single PDF file.</p>
-                <br />
-                <div className='answer'>
-                <FormGroup>
-                    <Input className='que'               
-                        id="exampleFile"
-                        name="file"
-                        type="file"
-                    />
-                    <FormText className='formtext'>
-                        Upload the file here
-                    </FormText>
-                </FormGroup>
-                <div className='or'><h5>OR</h5></div>
-                <FormGroup>
-                    <Input  className='que'
-                        placeholder='Type your answer here...'
-                        id="exampleText"
-                        name="text"
-                        type="textarea"
-                    />
-                    </FormGroup>
-                    <Button color='success'>
-                        <Link to="/end" className= 'submit-button'>Submit</Link>
-                    </Button>
-                </div>
+              <FormGroup>
+                <Input
+                  className='que'
+                  placeholder={question.placeholder}
+                  id={`exampleText${question.id}`}
+                  name={`text${question.id}`}
+                  type="textarea"
+                />
+                
+                <hr className="short-hr" />
+              </FormGroup>
+              <br />
+                
             </Form>
-        </Container>
-    </div>   
+          </div>
+        ))}
+        <Button color='primary' onClick={addQuestion}>
+          + Add Question
+        </Button>
+
+        {' '}
+        <Button color='secondary'>
+            <Link to="/answersheet" className='submit-button'>Preview</Link>
+        </Button>
+        {' '}
+        <Button color='success'>
+            <Link to="/my-exam-page" className='submit-button'>Submit</Link>
+        </Button>
+      </Container>
+    </div>
   );
 }
 

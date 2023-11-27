@@ -34,7 +34,7 @@ function NewExam() {
                 <Collapse isOpen={!collapsed} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink href="/my-exams">My Exams</NavLink>
+                            <NavLink href="/my-exam-page">My Exams</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink href="/ /">Settings</NavLink>
