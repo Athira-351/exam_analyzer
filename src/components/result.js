@@ -73,7 +73,6 @@ function Result(props) {
                     <th>S.no</th>
                     <th>Name</th>
                     <th>Score Obtained</th>
-                    <th>Maximum Score</th>
                 </tr>
             </thead>
             <tbody>
@@ -81,61 +80,51 @@ function Result(props) {
                     <td>1</td>
                     <td>Aarav Cyriac</td>
                     <td>150</td>
-                    <td>200</td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Abhinav Singh</td>
                     <td>160</td>
-                    <td>200</td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Anjana Michael</td>
                     <td>140</td>
-                    <td>200</td>
                 </tr>
                 <tr>
                     <td>4</td>
                     <td>Cia Dominic</td>
                     <td>135</td>
-                    <td>200</td>
                 </tr>
                 <tr>
                     <td>5</td>
                     <td>John Wilson</td>
                     <td>177</td>
-                    <td>200</td>
                 </tr>
                 <tr>
                     <td>6</td>
                     <td>Elizebath Dominic</td>
                     <td>193</td>
-                    <td>200</td>
                 </tr>
                 <tr>
                     <td>7</td>
                     <td>Sona Thomas</td>
                     <td>123</td>
-                    <td>200</td>
                 </tr>
                 <tr>
                     <td>8</td>
                     <td>Smith John</td>
                     <td>156</td>
-                    <td>200</td>
                 </tr>
                 <tr>
                     <td>9</td>
                     <td>Shivani S</td>
                     <td>144</td>
-                    <td>200</td>
                 </tr>
                 <tr>
                     <td>10</td>
                     <td>Aiswarya Mital</td>
                     <td>156</td>
-                    <td>200</td>
                 </tr>
             </tbody>
         </Table>
