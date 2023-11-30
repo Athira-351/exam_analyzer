@@ -91,10 +91,14 @@ function NewExam() {
                             </Table>
                         </div>
                     </div>
-                <Link to ="/next" className='link-texts'>
+                <Link
+                    to="/next"
+                    className='link-texts'
+                    state={inputdata}
+                >
                     <Button color='success'>Next</Button>
                 </Link>        
-                {' '}        
+                {' '}
                 <Link to ="/my-exam-page" className='link-texts'>
                     <Button color='warning' className='cancel-button'>Cancel</Button>
                 </Link>

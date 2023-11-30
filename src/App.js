@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route,Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Start from './components/start';
 import Login from './components/login';
 import Signup from './components/signup';
@@ -11,33 +11,46 @@ import NewExam from './components/new-exam';
 import Result from './components/result';
 import OTP from './components/otp';
 import Next from './components/next';
-import MyExams from './components/my-exams';
 import End from './components/end';
 import Ans from './components/answersheet';
 
 function App() {
-    return (
 
-        <Router>
-            <Routes>
-                <Route path="/start" element = {<Start />} />  
-                <Route path="/login" element = {<Login />} />
-                <Route path="/signup" element = {<Signup />} />
-                <Route path="/my-exam-page" element = {<MyExamPage />} />
-                <Route path="/forgot-password" element = {<ForgotPassword />} />
-                <Route path ="/new-password" element = {<Newpassword />} />
-                <Route path ="/new-exam" element = {<NewExam />} />
-                <Route path = "/result" element = {<Result />} />
-                <Route path = "/otp" element = {<OTP />} />
-                <Route path = "/next" element = {<Next />} />
-                <Route path = "/my-exams" element = {<MyExams />} />
-                <Route path = "/answersheet" element = {<Ans />} />
-                <Route path = "/end" element = {<End />} />
-                <Route index element={<Start />} />                
-            </Routes>
-        </Router>
+    const userId = localStorage.getItem('userId')
 
-    );
+    if (userId) {
+        return (
+            <Router>
+                <Routes>
+                    <Route index Component={Start} />
+                    <Route path="/login" Component={Login} />
+                    <Route path="/signup" Component={Signup} />
+                    <Route path="/forgot-password" Component={ForgotPassword} />
+                    <Route path="/new-password" Component={Newpassword} />
+                    <Route path="/otp" Component={OTP} />
+                    <Route path="/new-exam" Component={NewExam} />
+                    <Route path="/my-exam-page" Component={MyExamPage} />
+                    <Route path="/result" Component={Result} />
+                    <Route path="/next" Component={Next} />
+                    <Route path="/answersheet/:examId" Component={Ans} />
+                    <Route path="/end" Component={End} />
+                </Routes>
+            </Router>
+        );
+    } else {
+        return (
+            <Router>
+                <Routes>
+                    <Route index Component={Start} />
+                    <Route path="/login" Component={Login} />
+                    <Route path="/signup" Component={Signup} />
+                    <Route path="/forgot-password" Component={ForgotPassword} />
+                    <Route path="/new-password" Component={Newpassword} />
+                    <Route path="/otp" Component={OTP} />
+                </Routes>
+            </Router>
+        )
+    }
 }
 
 export default App

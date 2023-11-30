@@ -1,18 +1,62 @@
 import './result.css';
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
-import { Collapse,
+import axios from "axios";
+import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {
+    Collapse,
     Navbar,
     NavbarToggler,
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink, 
+    NavLink,
     Table,
     Button,
-    Container } from 'reactstrap';
+    Container
+} from 'reactstrap';
 
-function Result(props) {
+function Result() {
+
+    const location = useLocation()
+    const [exam, setExam] = useState([])
+    const [results, setResults] = useState([])
+
+    const getResults = () => {
+
+        const options = {
+            method: 'GET',
+            url: 'http://127.0.0.1:5000/result',
+            params: { exam_id: location.state.examId }
+        };
+
+        axios.request(options).then(function (response) {
+            console.log(response.data)
+            setResults(response.data)
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+
+    const getExamData = () => {
+
+        const options = {
+            method: 'GET',
+            url: 'http://127.0.0.1:5000/exam',
+            params: { exam_id: location.state.examId }
+        };
+
+        axios.request(options).then(function (response) {
+            setExam(response.data)
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+
+    useEffect(() => {
+        getResults()
+        getExamData()
+    }, [])
+
     const [collapsed, setCollapsed] = useState(true);
     const toggleNavbar = () => setCollapsed(!collapsed);
 
@@ -39,103 +83,70 @@ function Result(props) {
             </Navbar>
             <br /><br /><br />
             <Container className='result-container'>
-               <h2 className='result-heading'><b>RESULT</b></h2>
+                <h2 className='result-heading'><b>RESULT</b></h2>
             </Container>
             <br /><br /><br />
-       
 
-        <Container className='container'>
-        <Table bordered>
-            <thead>
-                <tr className="table-dark">
-                    <th>Exam Name</th>
-                    <th>Exam Date</th>
-                    <th>Starting Time</th>
-                    <th>Exam Duration<br />(in minutes)</th>
-                    <th>Students Attended</th>                   
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Computer Vision</td>
-                    <td>23/10/2023</td>
-                    <td>7 PM</td>
-                    <td>2 hours</td>
-                    <td>10</td>                                     
-                </tr>
-            </tbody>
-        </Table>
 
-        <div className='result-table'>
-        <Table bordered>
-            <thead>
-                <tr>
-                    <th>S.no</th>
-                    <th>Name</th>
-                    <th>Score Obtained</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Aarav Cyriac</td>
-                    <td>150</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Abhinav Singh</td>
-                    <td>160</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Anjana Michael</td>
-                    <td>140</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Cia Dominic</td>
-                    <td>135</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>John Wilson</td>
-                    <td>177</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Elizebath Dominic</td>
-                    <td>193</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Sona Thomas</td>
-                    <td>123</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Smith John</td>
-                    <td>156</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Shivani S</td>
-                    <td>144</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Aiswarya Mital</td>
-                    <td>156</td>
-                </tr>
-            </tbody>
-        </Table>
-        </div>
-        </Container>
-        <br />
-        <Button outline color='secondary' className='back-btn'>
-            <Link to ="/my-exam-page" className='link-text'>Back</Link>
-        </Button>
-       
+            <Container className='container'>
+                <Table bordered>
+                    <thead>
+                        <tr className="table-dark">
+                            <th>Exam Name</th>
+                            <th>Exam Date</th>
+                            <th>Starting Time</th>
+                            <th>Exam Duration<br />(in minutes)</th>
+                            <th>Students Attended</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{exam.name}</td>
+                            <td>{exam.date}</td>
+                            <td>{exam.start_time}</td>
+                            <td>{exam.duration}</td>
+                            <td>{results.length}</td>
+                        </tr>
+                    </tbody>
+                </Table>
+
+                {
+                    results.length > 0 ?
+                    <div className='result-table'>
+                        <Table bordered>
+                            <thead>
+                                <tr>
+                                    <th>S.no</th>
+                                    <th>Student ID</th>
+                                    <th>Marks Obtained</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    results.map((each, index) => (
+                                        <tr key={each.result_id}>
+                                            <td>{index + 1}</td>
+                                            <td>{each.student_id}</td>
+                                            <td>{each.score.toFixed(2)} Marks</td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </Table>
+                    </div>
+                    :
+                    <h5>No students attended this exam so far</h5>
+                }
+
+            </Container>
+            <br />
+            <Link to="/my-exam-page" className='link-text'>
+                <Button outline color='secondary' className='back-btn'>
+                    Back
+                </Button>
+            </Link>
         </div>
     );
 }
+
 export default Result;

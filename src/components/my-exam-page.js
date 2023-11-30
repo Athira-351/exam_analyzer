@@ -1,33 +1,49 @@
 import './my-exam-page.css';
-import { Link } from "react-router-dom";
-import React , { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Collapse,
+import {
+    Collapse,
     Navbar,
     NavbarToggler,
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink, 
+    NavLink,
     Table,
     Button,
-    Container } from 'reactstrap';
+    Container
+} from 'reactstrap';
+import axios from "axios";
 
-    
-function MyExamPage(props) {
+
+function MyExamPage() {
+
     const [collapsed, setCollapsed] = useState(true);
-    const [linkCopied, setLinkCopied] = useState(false);
+    const [exams, setExams] = useState([])
 
+    useEffect(() => {
+        const options = {
+            method: 'GET',
+            url: 'http://127.0.01:5000/exams'
+        };
+
+        axios.request(options).then(function (response) {
+            setExams(response.data)
+        }).catch(function (error) {
+            console.error(error);
+        });
+
+    })
     const toggleNavbar = () => setCollapsed(!collapsed);
 
-    const handleCopyLink = () => {
-        // Logic to copy the link
-        // For simplicity, we'll just set linkCopied to true after a short delay
-        setTimeout(() => {
-            setLinkCopied(true);
-            toast.success("Exam Link copied to clipboard", { autoClose: 500 });
-        }, 1000);
+
+
+    const handleCopyLink = (examId) => {
+        navigator.clipboard.writeText(`${window.location.origin}/answersheet/${examId}`)
+        toast.success("Exam Link copied to clipboard", { autoClose: 500 });
     };
 
     return (
@@ -52,11 +68,13 @@ function MyExamPage(props) {
                 </Collapse>
             </Navbar>
             <br />
-            <Container className = 'container' >
+            <Container className='container' >
                 <div className='newexam-button'>
-                    <Button color='success' className='right-button'>
-                        <Link to ="/new-exam" className='link-texts'>New Exam</Link>
-                    </Button>
+                    <Link to="/new-exam" className='link-texts'>
+                        <Button color='success' className='right-button'>
+                            New Exam
+                        </Button>
+                    </Link>
                 </div>
                 <div className='myexam-table centered-table'>
                     <div className='center'>
@@ -68,68 +86,41 @@ function MyExamPage(props) {
                                     <th>Exam Date</th>
                                     <th>Starting Time</th>
                                     <th>Exam Duration<br />(in minutes)</th>
-                                    <th>Students Attended</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Deep Learning</td>
-                                    <td>23 Oct 2023</td>
-                                    <td>7 PM - 9 PM</td>
-                                    <td>2 hours</td>
-                                    <td>100</td>
-                                    <td>
-                                        <Button
-                                            onClick={handleCopyLink}
-                                            className="btn btn-outline-secondary copy-link"
-                                        >
-                                            {linkCopied ? 'Copy Link' : 'Copy Link'}
-                                        </Button>
-                                        <Button color='primary' className="result-btn">
-                                           <Link to="/result" className= 'result-button'>View Result</Link>
-                                        </Button>
-                                   </td>                   
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Computer Vision</td>
-                                    <td>24 Oct 2023</td>
-                                    <td>12.30 PM - 3.30 PM</td>
-                                    <td>3 hours</td>
-                                    <td>100</td>
-                                    <td>
-                                        <Button
-                                            onClick={handleCopyLink}
-                                            className="btn btn-outline-secondary copy-link"
-                                        >
-                                            {linkCopied ? 'Copy Link' : 'Copy Link'}
-                                        </Button>
-                                        <Button color='primary' className="result-btn">
-                                            <Link to="/result" className= 'result-button'>View Result</Link>
-                                        </Button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Computer Forensics</td>
-                                    <td>24 Oct 2023</td>
-                                    <td>4 PM - 7 PM</td>
-                                    <td>2 hours</td>
-                                    <td>100</td>
-                                    <td>         
-                                        <Button
-                                            onClick={handleCopyLink}
-                                            className="btn btn-outline-secondary copy-link"
-                                        >
-                                            {linkCopied ? 'Copy Link' : 'Copy Link'}
-                                        </Button>
-                                        <Button color='primary' className="result-btn">
-                                            <Link to="/result" className= 'result-button'>View Result</Link>
-                                        </Button> 
-                                    </td>
-                                </tr>
+                                {
+                                    exams.map((item, index) => {
+                                        return (
+                                            <tr key={item.id}>
+                                                <td>{index + 1}</td>
+                                                <td>{item.name}</td>
+                                                <td>{item.date}</td>
+                                                <td>{item.start_time}</td>
+                                                <td>{item.duration} Minutes</td>
+                                                <td>
+                                                    <Button
+                                                        onClick={() => handleCopyLink(item.id)}
+                                                        className="btn btn-outline-secondary copy-link"
+                                                    >
+                                                        Copy Link
+                                                    </Button>
+
+                                                    <Link
+                                                        to="/result"
+                                                        state={{ examId: item.id }}
+                                                        className='result-button'
+                                                    >
+                                                        <Button color='primary' className="result-btn">
+                                                            View Result
+                                                        </Button>
+                                                    </Link>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
                             </tbody>
                         </Table>
                     </div>
@@ -137,7 +128,7 @@ function MyExamPage(props) {
             </Container>
             {/* Toast container */}
             <ToastContainer />
-        </div>     
+        </div>
     );
 }
 export default MyExamPage;
